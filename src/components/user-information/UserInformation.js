@@ -7,7 +7,7 @@ import {
 import UserDashBoard from "./UserDashBoard";
 import { Stack } from "@mui/system";
 import CustomImageContainer from "../CustomImageContainer";
-import testImage from "../../public/static/profile/pro.png";
+//import testImage from "../../public/static/profile/pro.png";
 import UserDetails from "./UserDetails";
 import BodySection from "./BodySection";
 import { setWalletAmount } from "../../redux/slices/cart";
