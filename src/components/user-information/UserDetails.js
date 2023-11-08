@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Stack } from "@mui/system";
 import CustomImageContainer from "../CustomImageContainer";
-import testImage from "../../public/static/profile/pro.png";
+//import testImage from "../../public/static/profile/pro.png";
 import {
   IconButton,
   Skeleton,
