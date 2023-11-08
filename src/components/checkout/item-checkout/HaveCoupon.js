@@ -131,7 +131,7 @@ const HaveCoupon = (props) => {
                 }}
               >
                 <InputBase
-                  placeholder={t("Enter Your Coupon..")}
+                  placeholder={t("Entrer ton Coupon..")}
                   sx={{
                     flex: 1,
                     width: "100%",
@@ -164,7 +164,7 @@ const HaveCoupon = (props) => {
                 onClick={handleApply}
                 disabled={couponCode === "" || !couponCode}
               >
-                {t("Apply")}
+                {t("Appliquer")}
               </CouponButton>
             </Grid>
           </>

@@ -248,7 +248,7 @@ const OrderCalculation = (props) => {
         {orderType === "delivery" || orderType === "schedule_order" ? (
           <>
             <Grid item md={8} xs={8}>
-              {t("Delivery fee")}
+              {t("frais de livraison")}
             </Grid>
             <Grid item md={4} xs={4} align="right">
               {couponDiscount ? (

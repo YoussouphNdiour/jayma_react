@@ -133,7 +133,7 @@ const DeliveryDetails = (props) => {
                   : theme.palette.neutral[700]
               }
             >
-              {t("I’ll Pick It Up MySelf")}
+              {t("je vais passer récupérer ma commande")}
             </Typography>
           </DeliveryOptionButton>
           {storeData?.schedule_order && (

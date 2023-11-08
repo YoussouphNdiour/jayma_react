@@ -117,7 +117,7 @@ const ItemCheckout = (props) => {
       latitude: currentLatLng?.lat,
       longitude: currentLatLng?.lng,
       address: location,
-      address_type: "Selected Address",
+      address_type: "Adresse sélectionnée",
     });
     refetch();
   }, []);
@@ -201,7 +201,7 @@ const ItemCheckout = (props) => {
       latitude: currentLatLng?.lat,
       longitude: currentLatLng?.lng,
       address: location,
-      address_type: "Selected Address",
+      address_type: "Adresse sélectionnée",
     });
     refetch();
   }, []);
@@ -729,7 +729,7 @@ const ItemCheckout = (props) => {
             backgroundcolor={isSmall && theme.palette.background.default}
           >
             <Stack justifyContent="space-between">
-              <CouponTitle textAlign="left">{t("Order Summary")}</CouponTitle>
+              <CouponTitle textAlign="left">{t("Commande")}</CouponTitle>
               <SimpleBar style={{ maxHeight: "500px", width: "100%" }}>
                 <OrderSummaryDetails
                   page={page}

@@ -51,7 +51,7 @@ const AdditionalAddresses = (props) => {
           </Grid>
           <Grid item xs={6}>
             <CustomTextField
-              label={t("House number")}
+              label={t("Numéra villa/appartement")}
               value={additionalInformationStates.houseNumber}
               fullWidth
               onChange={(e) =>
@@ -86,7 +86,7 @@ const AdditionalAddresses = (props) => {
                 fontSize="13px"
                 color={theme.palette.primary.main}
               >
-                {t("Save this Address")}
+                {t("sauvegarder mon adresse")}
               </Typography>
             }
           />
