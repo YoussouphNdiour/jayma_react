@@ -1,11 +1,22 @@
+// import moment from "moment";
+
+// export const currentDate = moment().format("YYYY/MM/DD HH:mm");
+// export const nextday = moment(currentDate).add(1, "days").format("YYYY/MM/DD");
+
+// export const today = moment(currentDate).format("dddd");
+// export const tomorrow = moment(nextday).format("dddd");
+
+// export const CurrentDatee = moment().format();
+
+// export const todayTime = moment(CurrentDatee).format("HH:mm");
 import moment from "moment";
 
-export const currentDate = moment().format("YYYY/MM/DD HH:mm");
-export const nextday = moment(currentDate).add(1, "days").format("YYYY/MM/DD");
+export const currentDate = moment().format("YYYY-MM-DDTHH:mm:ss");
+export const nextDay = moment(currentDate).add(1, "days").format("YYYY-MM-DDTHH:mm:ss");
 
 export const today = moment(currentDate).format("dddd");
-export const tomorrow = moment(nextday).format("dddd");
+export const tomorrow = moment(nextDay).format("dddd");
 
-export const CurrentDatee = moment().format();
+export const currentDateTime = moment().format("YYYY-MM-DDTHH:mm:ss");
+export const todayTime = moment(currentDateTime).format("HH:mm");
 
-export const todayTime = moment(CurrentDatee).format("HH:mm");
