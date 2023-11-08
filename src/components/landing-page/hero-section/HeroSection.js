@@ -131,17 +131,17 @@ const HeroSection = ({ configData, landingPageData, handleOrderNow }) => {
 					</Grid>
 				</Grid>
 			</CustomBoxFullWidth>
-			{isXSmall && (
+			{/* {isXSmall && (
 				<>
 					{currentLocation ? (
 						<DynamicModuleSelection isSmall />
-					) : (
+					) : ( */}
 						<CustomStackFullWidth mt="10px">
 							<HeroLocationForm />
-						</CustomStackFullWidth>
-					)}
+						 </CustomStackFullWidth>
+					{/*)}
 				</>
-			)}
+			)} */}
 		</CustomContainer>
 	);
 };
