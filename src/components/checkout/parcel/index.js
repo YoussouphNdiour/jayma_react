@@ -88,7 +88,7 @@ const ParcelCheckout = () => {
       latitude: currentLatLng?.lat,
       longitude: currentLatLng?.lng,
       address: location,
-      address_type: "Selected Address",
+      address_type: "Adresse sélectionnée",
     });
   }, []);
   const parcelDeliveryFree = () => {
