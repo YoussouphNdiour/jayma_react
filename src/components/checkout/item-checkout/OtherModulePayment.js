@@ -39,7 +39,7 @@ const OtherModulePayment = (props) => {
     setOpenModel,
     usePartialPayment,
   } = props;
-
+  console.log("configData",configData);
   const handleClick = (item) => {
     setPaymentMethod(item);
   };
@@ -56,9 +56,11 @@ const OtherModulePayment = (props) => {
         spacing={1.7}
         sx={{ flexWrap: "wrap" }}
       >
-        {zoneData?.data?.zone_data?.[0]?.cash_on_delivery &&
-        (configData?.partial_payment_method === "both" ||
-          configData?.partial_payment_method === "cod") ? (
+        {zoneData?.data?.zone_data?.[0]?.cash_on_delivery 
+        // &&
+        // (configData?.partial_payment_method === "both" ||
+        //   configData?.partial_payment_method === "cod") 
+          ? (
           <PayButton
             value="cash_on_delivery"
             paymentMethod={paymentMethod}
@@ -70,10 +72,10 @@ const OtherModulePayment = (props) => {
               height="20px"
               alt="cod"
             />
-            <Typography fontSize="12px">{t("Pay after service")}</Typography>
+            <Typography fontSize="12px">{t("Paiement a la livraison")}</Typography>
           </PayButton>
         ) : null}
-        {configData?.customer_wallet_status === 1 &&
+        {/* {configData?.customer_wallet_status === 1 &&
           forprescription !== "true" && (
             <PayButton
               onClick={() => handleClick("wallet")}
@@ -89,28 +91,30 @@ const OtherModulePayment = (props) => {
               />
               <Typography fontSize="12px">{t("Pay via Wallet")}</Typography>
             </PayButton>
-          )}
+          )} */}
 
-        {/*{zoneData?.data?.zone_data?.[0]?.digital_payment &&*/}
-        {/*  forprescription !== "true" &&*/}
-        {/*  configData?.digital_payment_info?.digital_payment &&*/}
-        {/*  configData?.digital_payment_info?.default_payment_gateways &&*/}
-        {/*  (configData?.partial_payment_method === "digital_payment" ||*/}
-        {/*    configData?.partial_payment_method === "both") && (*/}
-        {/*    <PayButton*/}
-        {/*      value="digital_payment"*/}
-        {/*      paymentMethod={paymentMethod}*/}
-        {/*      onClick={() => handleClick("digital_payment")}*/}
-        {/*    >*/}
-        {/*      <CustomImageContainer*/}
-        {/*        src={money.src}*/}
-        {/*        width="20px"*/}
-        {/*        height="20px"*/}
-        {/*        alt="cod"*/}
-        {/*      />*/}
-        {/*      <Typography fontSize="12px">{t("Pay after service")}</Typography>*/}
-        {/*    </PayButton>*/}
-        {/*  )}*/}
+        {zoneData?.data?.zone_data?.[0]?.digital_payment  ?
+        // &&
+        //  forprescription !== "true" &&
+        //  configData?.digital_payment_info?.digital_payment &&
+        //  configData?.digital_payment_info?.default_payment_gateways &&
+        //  (configData?.partial_payment_method === "digital_payment" ||
+        //    configData?.partial_payment_method === "both") && 
+           (
+           <PayButton
+             value="digital_payment"
+             paymentMethod={paymentMethod}
+             onClick={() => handleClick("digital_payment")}
+           >
+             <CustomImageContainer
+               src={money.src}
+               width="20px"
+               height="20px"
+               alt="cod"
+             />
+             <Typography fontSize="12px">{t("Paiement digital")}</Typography>
+           </PayButton>
+         ) : null}
       </CustomStackFullWidth>
       <CustomStackFullWidth spacing={2.4}>
         <Typography fontSize="12px" fontWeight="500">
@@ -120,12 +124,14 @@ const OtherModulePayment = (props) => {
           </Typography>
         </Typography>
         <CustomStackFullWidth spacing={1}>
-          {zoneData?.data?.zone_data?.[0]?.digital_payment &&
-            paidBy !== "receiver" &&
-            forprescription !== "true" &&
-            configData?.digital_payment_info?.digital_payment &&
-            (configData?.partial_payment_method === "digital_payment" ||
-              configData?.partial_payment_method === "both") && (
+          {zoneData?.data?.zone_data?.[0]?.digital_payment 
+          // &&
+          //   paidBy !== "receiver" &&
+          //   forprescription !== "true" &&
+          //   configData?.digital_payment_info?.digital_payment &&
+          //   (configData?.partial_payment_method === "digital_payment" ||
+          //     configData?.partial_payment_method === "both") && 
+              (
               <>
                 {configData?.active_payment_method_list?.map((item, index) => {
                   return (
