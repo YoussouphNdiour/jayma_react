@@ -124,14 +124,12 @@ const OtherModulePayment = (props) => {
           </Typography>
         </Typography>
         <CustomStackFullWidth spacing={1}>
-          {zoneData?.data?.zone_data?.[0]?.digital_payment 
-          // &&
-          //   paidBy !== "receiver" &&
-          //   forprescription !== "true" &&
-          //   configData?.digital_payment_info?.digital_payment &&
-          //   (configData?.partial_payment_method === "digital_payment" ||
-          //     configData?.partial_payment_method === "both") && 
-              (
+          {zoneData?.data?.zone_data?.[0]?.digital_payment &&
+            paidBy !== "receiver" &&
+            forprescription !== "true" &&
+            configData?.digital_payment_info?.digital_payment &&
+            (configData?.partial_payment_method === "digital_payment" ||
+              configData?.partial_payment_method === "both") && (
               <>
                 {configData?.active_payment_method_list?.map((item, index) => {
                   return (
