@@ -78,7 +78,7 @@ const HeroSection = ({ configData, landingPageData, handleOrderNow }) => {
 							/>
 						</NoSsr>
 					</Grid>
-					<Grid item xs={4} md={5} align="right">
+					{/* <Grid item xs={4} md={5} align="right">
 						<CustomStackFullWidth
 							height="100%"
 							alignItems="flex-start"
@@ -128,7 +128,7 @@ const HeroSection = ({ configData, landingPageData, handleOrderNow }) => {
 								/>
 							</Box>
 						</CustomStackFullWidth>
-					</Grid>
+					</Grid> */}
 				</Grid>
 			</CustomBoxFullWidth>
 			{/* {isXSmall && (
