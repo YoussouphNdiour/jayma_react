@@ -213,7 +213,15 @@ const HeroLocationForm = () => {
     setOpenModuleSelection(false);
   };
   const excludedDivRef = useRef(null);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLocationEnable();
+    }, 5000);
 
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
   useEffect(() => {
     // Handle clicks outside of excludedDivRef
     const handleClickOutside = (event) => {
@@ -225,7 +233,7 @@ const HeroLocationForm = () => {
         // setClickedOutside(true);
       }
     };
-    setLocationEnable();
+    // setLocationEnable();
     // Add event listener to document
     document.addEventListener("mousedown", handleClickOutside);
 
