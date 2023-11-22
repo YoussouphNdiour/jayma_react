@@ -18,7 +18,7 @@ const LandingPage = ({configData, landingPageData}) => {
     const Testimonials = dynamic(() => import("./Testimonials"), {
         ssr: false,
     });
-    const [location, setLocation] = useState(undefined);
+    const [location, setLocation] = useState("Dakar");
     const [open, setOpen] = useState(false);
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
@@ -58,7 +58,7 @@ const LandingPage = ({configData, landingPageData}) => {
                 landingPageData={landingPageData}
                 handleOrderNow={handleOrderNow}
             />
-            <ComponentOne
+            {/* <ComponentOne
                 landingPageData={landingPageData}
                 configData={configData}
                 handleOrderNow={handleOrderNow}
@@ -67,8 +67,8 @@ const LandingPage = ({configData, landingPageData}) => {
             <ComponentTwo
                 configData={configData}
                 landingPageData={landingPageData}
-            />
-            {(landingPageData?.earning_title || landingPageData?.earning_sub_title || landingPageData?.earning_seller_title || landingPageData?.earning_seller_sub_title || landingPageData?.earning_dm_title || landingPageData?.earning_dm_sub_title) && (
+            /> */}
+            {/* {(landingPageData?.earning_title || landingPageData?.earning_sub_title || landingPageData?.earning_seller_title || landingPageData?.earning_seller_sub_title || landingPageData?.earning_dm_title || landingPageData?.earning_dm_sub_title) && (
                 <Registration data={landingPageData} isSmall={isSmall}/>)}
             {
                 landingPageData?.fixed_promotional_banner && <DiscountBanner
@@ -88,7 +88,7 @@ const LandingPage = ({configData, landingPageData}) => {
                 handleClose={handleClose}
                 coords={coords}
                 disableAutoFocus
-            />)}
+            />)} */}
             <NoSsr>
                 <CookiesConsent text={configData?.cookies_text}/>
             </NoSsr>
