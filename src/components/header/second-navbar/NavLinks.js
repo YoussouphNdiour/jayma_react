@@ -40,10 +40,19 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
                 setModal={setCategoryModal}
                 setRestaurantModal={setRestaurantModal}
               />
-              <NavStore
+              <Link href="/about-us">
+                <NavLinkStyle
+                  underline="none"
+                  // language_direction={language_direction}
+                  sx={{ cursor: "pointer", fontWeight:'semi-bold' }}
+                >
+                  {t("A propos")}
+                </NavLinkStyle>
+              </Link>
+              {/* <NavStore
                 openModal={openRestaurantModal}
                 setModal={setRestaurantModal}
-              />
+              /> */}
             </>
           ) : (
             <Link href="/help-and-support">
