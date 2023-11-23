@@ -23,6 +23,7 @@ import { filterTypeItems, filterTypeStores } from "../../search/filterTypes";
 import { useNewArrivalsInfiniteScroll } from "../../../api-manage/hooks/react-query/product-details/useNewArrivals";
 import useGetStoresByFiltering from "../../../api-manage/hooks/react-query/store/useGetStoresByFiltering";
 import { getCurrentModuleType } from "../../../helper-functions/getCurrentModuleType";
+import { useTranslation } from "react-i18next";
 
 // Three types of data shows here. Search results, all discounted products and stores and categories stores and products
 const SearchResult = (props) => {
@@ -35,6 +36,8 @@ const SearchResult = (props) => {
   const [offset, setOffset] = useState(0);
   const [openSideDrawer, setOpenSideDrawer] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const { t } = useTranslation();
+
   const [priceRange, setPriceRange] = useState([
     { min_price: 0, max_price: 1 },
   ]);
@@ -51,7 +54,7 @@ const SearchResult = (props) => {
           : getCurrentModuleType() === "pharmacy"
           ? "Medicines"
           : "Groceries",
-      value: "items",
+      value: t("items found"),
     },
     {
       name: getCurrentModuleType() === "food" ? "Restaurants" : "Stores",
