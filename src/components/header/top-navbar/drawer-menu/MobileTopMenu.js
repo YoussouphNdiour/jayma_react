@@ -133,7 +133,24 @@ const MobileTopMenu = ({
                   primary={t("Home")}
                   onClick={() => handleRoute("/home")}
                 />
+                
               </ListItemButton>
+              <ListItemButton
+                sx={{
+                  marginTop: "30px",
+                  "&:hover": {
+                    backgroundColor: (theme) =>
+                      alpha(theme.palette.primary.main, 0.3),
+                  },
+                }}
+              >
+<ListItemText
+                  sx={{ fontSize: "12px" }}
+                  primary={t("About us")}
+                  onClick={() => handleRoute("/about-us")}
+                />
+              </ListItemButton>
+              
               {location && (
                 <>
                   <CollapsableMenu
@@ -142,7 +159,7 @@ const MobileTopMenu = ({
                     toggleDrawers={toggleDrawer}
                     pathName="/categories"
                   />
-                  <CollapsableMenu
+                  {/* <CollapsableMenu
                     value={collapsableMenu.latest}
                     setOpenDrawer={setOpenDrawer}
                     toggleDrawers={toggleDrawer}
@@ -153,7 +170,7 @@ const MobileTopMenu = ({
                     setOpenDrawer={setOpenDrawer}
                     toggleDrawers={toggleDrawer}
                     pathName="/store/latest"
-                  />
+                  /> */}
                 </>
               )}
               <ListItemButton>
