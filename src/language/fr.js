@@ -127,6 +127,7 @@ export const french = {
 "Your cart has been cleared successfully. Now try to add the product again.": "Votre panier a été vidé avec succès. Essayez maintenant d'ajouter le produit à nouveau",
 "items in your cart": "articles dans votre panier",
 "No Favourite Items Found": "Aucun article favori trouvé",
+"items found":"articles trouvés",
 "No Favourite Stores Found": "Aucun magasin favori trouvé",
 "You have nothing in your cart to checkout.": "Vous n'avez rien dans votre panier à commander",
 "Choose Your Interests": "Choisissez vos centres d'intérêt",
