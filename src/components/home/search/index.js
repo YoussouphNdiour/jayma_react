@@ -460,7 +460,7 @@ const SearchResult = (props) => {
   return (
     <CustomContainer>
       <CustomStackFullWidth alignItems="center" justifyContent="center">
-        <CustomStackFullWidth
+        {/* <CustomStackFullWidth
           alignItems="center"
           justifyContent="center"
           sx={{ marginTop: "20px", marginBottom: "30px" }}
@@ -470,7 +470,7 @@ const SearchResult = (props) => {
             currentTab={currentTab}
             setCurrentTab={handleCurrentTab}
           />
-        </CustomStackFullWidth>
+        </CustomStackFullWidth> */}
         <SearchMenu
           currentView={currentView}
           setCurrentView={setCurrentView}
