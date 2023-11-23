@@ -46,7 +46,7 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
                   // language_direction={language_direction}
                   sx={{ cursor: "pointer", fontWeight:'semi-bold' }}
                 >
-                  {t("A propos")}
+                  {t("About us")}
                 </NavLinkStyle>
               </Link>
               {/* <NavStore
