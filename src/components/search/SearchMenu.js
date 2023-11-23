@@ -60,7 +60,7 @@ const SearchMenu = (props) => {
     }
   }, [currentTab]);
   const textHandler = () => {
-    return `${totalDataCount} ${tabs[currentTab]?.value} Found`;
+    return `${totalDataCount} ${tabs[currentTab]?.value}`;
   };
   return (
     <CustomBoxFullWidth sx={{ marginBottom: "20px" }}>
@@ -84,7 +84,7 @@ const SearchMenu = (props) => {
                 onClick={() => setCurrentView(0)}
               >
                 <WindowIcon />
-                {isSmallSize ? null : <Body2 text="Grid view" />}
+                {isSmallSize ? null : <Body2 text="Vue en grille" />}
               </ViewWrapper>
             ) : null}
           </Grid>
@@ -95,7 +95,7 @@ const SearchMenu = (props) => {
                 onClick={() => setCurrentView(1)}
               >
                 <ViewListIcon sx={{ fontSize: "30px" }} />
-                {isSmallSize ? null : <Body2 text="List view" />}
+                {isSmallSize ? null : <Body2 text="Vue en liste" />}
               </ViewWrapper>
             ) : null}
           </Grid>
