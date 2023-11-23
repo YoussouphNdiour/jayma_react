@@ -30,6 +30,7 @@ export const english = {
   "more for free delivery": "more for free delivery",
   "Checking theme and rtl": "Checking theme and rtl",
   "Download ON": "Download ON",
+  "items found":"items found",
   "No items added in your cart. Please add product to your cart list.":
     "No items added in your cart. Please add product to your cart list.",
   "GET IT ON": "GET IT ON",
