@@ -70,6 +70,8 @@ const CategoriesDetails = ({
     }
     setCategoryId(id);
   }, [childesData, id]);
+  console.log("data",data);
+
   return (
     <CustomStackFullWidth sx={{ minHeight: "70vh" }}>
       <Grid container spacing={5}>
@@ -103,13 +105,13 @@ const CategoriesDetails = ({
             (!isRefetching && !itemIsLoading ? (
               <>
                 <ProductList
-                  product_list={data}
+                  product_list={data?.pages[0]}
                   offset={offset}
                   page_limit={page_limit}
                   setOffset={setOffset}
                   wishlistcard="true"
                 />
-                {data?.products?.length === 0 && (
+                {data?.pages[0]?.products?.length === 0 && (
                   <CustomEmptyResult
                     image={noData}
                     label={not_found_text_item}
