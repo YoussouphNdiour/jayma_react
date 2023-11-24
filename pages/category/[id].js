@@ -58,7 +58,7 @@ const Index = ({ configData }) => {
     <>
       <CssBaseline />
       <SEO
-        title={configData ? atob(router?.query?.name) : "Loading..."}
+        title={configData ? router?.query?.name : "Loading..."}
         image={`${configData?.base_urls?.business_logo_url}/${configData?.fav_icon}`}
         businessName={configData?.business_name}
       />
