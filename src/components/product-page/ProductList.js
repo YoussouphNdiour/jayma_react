@@ -23,6 +23,7 @@ export default function ProductList({
               xs={1}
               item={product}
               changed_bg="true"
+              cardFor="list-view"
               //productImageUrl={global?.base_urls?.product_image_url}
             />
           </Grid>
