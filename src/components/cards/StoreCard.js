@@ -133,7 +133,7 @@ const StoreCard = (props) => {
 		router.push({
 			pathname: `/store/[id]`,
 			query: {
-				id: `${item?.slug ? item?.slug : item?.id}`,
+				id: `${item?.id ? item?.id : item?.slug}`,
 				module_id: `${item?.module_id}`,
 				module_type: getCurrentModuleType(),
 				store_zone_id: `${item?.zone_id}`,
