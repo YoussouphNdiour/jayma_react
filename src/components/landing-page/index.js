@@ -13,7 +13,6 @@ import Banners from "./Banners";
 import {NoSsr, useMediaQuery, useTheme} from "@mui/material";
 import DiscountBanner from "./DiscountBanner";
 import CookiesConsent from "../CookiesConsent";
-// import SplashScreen from "../../splash-screen";
 const LandingPage = ({configData, landingPageData}) => {
     const Testimonials = dynamic(() => import("./Testimonials"), {
         ssr: false,
@@ -58,7 +57,6 @@ const LandingPage = ({configData, landingPageData}) => {
                 landingPageData={landingPageData}
                 handleOrderNow={handleOrderNow}
             />
-            // <SplashScreen/>
             {/* <ComponentOne
                 landingPageData={landingPageData}
                 configData={configData}
