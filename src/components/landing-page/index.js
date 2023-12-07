@@ -1,43 +1,44 @@
 import React, {useEffect, useState} from "react";
-import ComponentOne from "./ComponentOne";
-import Registration from "./Registration";
-import ComponentTwo from "./ComponentTwo";
+// import ComponentOne from "./ComponentOne";
+// import Registration from "./Registration";
+// import ComponentTwo from "./ComponentTwo";
 import HeroSection from "./hero-section/HeroSection";
 import dynamic from "next/dynamic";
 import PushNotificationLayout from "../PushNotificationLayout";
-import AppDownloadSection from "./app-download-section/index";
+// import AppDownloadSection from "./app-download-section/index";
 import {useGeolocated} from "react-geolocated";
 import {useRouter} from "next/router";
-import MapModal from "../Map/MapModal";
-import Banners from "./Banners";
+// import MapModal from "../Map/MapModal";
+// import Banners from "./Banners";
 import {NoSsr, useMediaQuery, useTheme} from "@mui/material";
-import DiscountBanner from "./DiscountBanner";
+// import DiscountBanner from "./DiscountBanner";
 import CookiesConsent from "../CookiesConsent";
+import SplashScreen from "../../splash-screen";
 const LandingPage = ({configData, landingPageData}) => {
-    const Testimonials = dynamic(() => import("./Testimonials"), {
-        ssr: false,
-    });
+    // const Testimonials = dynamic(() => import("./Testimonials"), {
+    //     ssr: false,
+    // });
     const [location, setLocation] = useState("Dakar");
     const [open, setOpen] = useState(false);
     const theme = useTheme();
-    const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
-    const {coords} = useGeolocated({
-        positionOptions: {
-            enableHighAccuracy: false,
-        }, userDecisionTimeout: 5000, isGeolocationEnabled: true,
-    });
+    // const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
+    // const {coords} = useGeolocated({
+    //     positionOptions: {
+    //         enableHighAccuracy: false,
+    //     }, userDecisionTimeout: 5000, isGeolocationEnabled: true,
+    // });
     useEffect(() => {
         setLocation(JSON.stringify(localStorage.getItem("location")));
     }, []);
-    const handleClose = () => {
-        const location = localStorage.getItem("location");
-        const isModuleExist = localStorage.getItem("module");
-        if (location) {
-            isModuleExist && setOpen(false);
-        } else {
-            setOpen(false);
-        }
-    };
+    // const handleClose = () => {
+    //     const location = localStorage.getItem("location");
+    //     const isModuleExist = localStorage.getItem("module");
+    //     if (location) {
+    //         isModuleExist && setOpen(false);
+    //     } else {
+    //         setOpen(false);
+    //     }
+    // };
     const router = useRouter();
     const handleOrderNow = () => {
         if (location) {
@@ -57,6 +58,7 @@ const LandingPage = ({configData, landingPageData}) => {
                 landingPageData={landingPageData}
                 handleOrderNow={handleOrderNow}
             />
+            <SplashScreen/>
             {/* <ComponentOne
                 landingPageData={landingPageData}
                 configData={configData}
@@ -89,7 +91,7 @@ const LandingPage = ({configData, landingPageData}) => {
                 disableAutoFocus
             />)} */}
             <NoSsr>
-                <CookiesConsent text={configData?.cookies_text}/>
+                <CookiesConsent text={"Nous utilisons des cookies et des technologies similaires sur notre site Web pour améliorer votre expérience de navigation et vous proposer un contenu personnalisé. En cliquant sur « Accepter » ou en continuant à utiliser notre site, vous acceptez l\'utilisation de ces cookies."}/>
             </NoSsr>
 
         </PushNotificationLayout>
