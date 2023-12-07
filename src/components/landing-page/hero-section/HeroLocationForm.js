@@ -7,8 +7,8 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-// import { CustomStackFullWidth } from "../../../styled-components/CustomStyles.style";
-// import { StyledButton } from "./HeroSection.style";
+import { CustomStackFullWidth } from "../../../styled-components/CustomStyles.style";
+import { StyledButton } from "./HeroSection.style";
 import { useGeolocated } from "react-geolocated";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
@@ -17,16 +17,25 @@ import useGetAutocompletePlace from "../../../api-manage/hooks/react-query/googl
 import useGetGeoCode from "../../../api-manage/hooks/react-query/google-api/useGetGeoCode";
 import useGetZoneId from "../../../api-manage/hooks/react-query/google-api/useGetZone";
 import useGetPlaceDetails from "../../../api-manage/hooks/react-query/google-api/useGetPlaceDetails";
-
+import AllowLocationDialog from "../../Map/AllowLocationDialog";
+import CustomMapSearch from "../../Map/CustomMapSearch";
+import MapModal from "../../Map/MapModal";
+import { ModuleSelection } from "./module-selection";
 import { useDispatch, useSelector } from "react-redux";
+import { module_select_success } from "../../../utils/toasterMessages";
 import { setWishList } from "../../../redux/slices/wishList";
 import { useWishListGet } from "../../../api-manage/hooks/react-query/wish-list/useWishListGet";
 import { getToken } from "../../../helper-functions/getToken";
-
+import { Box } from "@mui/system";
+import GpsFixedIcon from "@mui/icons-material/GpsFixed";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import MapIcon from "@mui/icons-material/Map";
 import { useRef } from "react";
 import { getLanguage } from "../../../helper-functions/getLanguage";
 const HeroLocationForm = () => {
   const theme = useTheme();
+  const isXSmall = useMediaQuery(theme.breakpoints.down("sm"));
   const { t } = useTranslation();
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -45,9 +54,13 @@ const HeroLocationForm = () => {
   const [openModuleSelection, setOpenModuleSelection] = useState(false);
   const [pickLocation, setPickLocation] = useState(false);
   const dispatch = useDispatch();
+  const divId = useId();
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => setOpen(true);
 
-
-
+  // const dispatch = useDispatch();
 
   //****getting current location/***/
   const { coords, isGeolocationAvailable, isGeolocationEnabled, getPosition } =
@@ -59,10 +72,45 @@ const HeroLocationForm = () => {
       isGeolocationEnabled: true,
     });
 
+  const handleCloseLocation = () => {
+    setOpenLocation(false);
+    setShowCurrentLocation(false);
+    setGeoLocationEnable(false);
+    setCurrentLocation(undefined);
+  };
+  const handleAgreeLocation = (e) => {
+    e.stopPropagation();
+    if (coords) {
+      setLocation({ lat: coords?.latitude, lng: coords?.longitude });
+      setOpenLocation(false);
+      setShowCurrentLocation(true);
+      setGeoLocationEnable(true);
+      setZoneIdEnabled(true);
+    } else {
+      setOpenLocation(true);
+    }
+  };
 
-
-
-
+  const HandleChangeForSearch = (event) => {
+    setSearchKey(event.target.value);
+    if (event.target.value) {
+      setEnabled(true);
+      setGeoLocationEnable(true);
+      setCurrentLocation(event.target.value);
+    } else {
+      setEnabled(false);
+      setCurrentLocation(undefined);
+    }
+  };
+  const handleChange = (event, value) => {
+    if (value) {
+      setPlaceId(value?.place_id);
+      setPlaceDescription(value?.description);
+      setZoneIdEnabled(false);
+      setGeoLocationEnable(true);
+    }
+    setPlaceDetailsEnabled(true);
+  };
   const { data: places, isLoading } = useGetAutocompletePlace(
     searchKey,
     enabled
@@ -157,6 +205,13 @@ const HeroLocationForm = () => {
     }
   };
 
+  const handleCloseModuleModal = (item) => {
+    if (item) {
+      toast.success(t(module_select_success));
+      router.push("/home", undefined, { shallow: true });
+    }
+    setOpenModuleSelection(false);
+  };
   const excludedDivRef = useRef(null);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -191,7 +246,9 @@ const HeroLocationForm = () => {
     };
   }, [excludedDivRef]);
 
-
+  const handlePickLocation = (e) => {
+    setPickLocation((prev) => !prev);
+  };
   const lanDirection = getLanguage() ? getLanguage() : "ltr";
 
   return (
