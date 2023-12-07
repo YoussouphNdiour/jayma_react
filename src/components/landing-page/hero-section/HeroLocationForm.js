@@ -72,45 +72,45 @@ const HeroLocationForm = () => {
       isGeolocationEnabled: true,
     });
 
-  const handleCloseLocation = () => {
-    setOpenLocation(false);
-    setShowCurrentLocation(false);
-    setGeoLocationEnable(false);
-    setCurrentLocation(undefined);
-  };
-  const handleAgreeLocation = (e) => {
-    e.stopPropagation();
-    if (coords) {
-      setLocation({ lat: coords?.latitude, lng: coords?.longitude });
-      setOpenLocation(false);
-      setShowCurrentLocation(true);
-      setGeoLocationEnable(true);
-      setZoneIdEnabled(true);
-    } else {
-      setOpenLocation(true);
-    }
-  };
+  // const handleCloseLocation = () => {
+  //   setOpenLocation(false);
+  //   setShowCurrentLocation(false);
+  //   setGeoLocationEnable(false);
+  //   setCurrentLocation(undefined);
+  // };
+  // const handleAgreeLocation = (e) => {
+  //   e.stopPropagation();
+  //   if (coords) {
+  //     setLocation({ lat: coords?.latitude, lng: coords?.longitude });
+  //     setOpenLocation(false);
+  //     setShowCurrentLocation(true);
+  //     setGeoLocationEnable(true);
+  //     setZoneIdEnabled(true);
+  //   } else {
+  //     setOpenLocation(true);
+  //   }
+  // };
 
-  const HandleChangeForSearch = (event) => {
-    setSearchKey(event.target.value);
-    if (event.target.value) {
-      setEnabled(true);
-      setGeoLocationEnable(true);
-      setCurrentLocation(event.target.value);
-    } else {
-      setEnabled(false);
-      setCurrentLocation(undefined);
-    }
-  };
-  const handleChange = (event, value) => {
-    if (value) {
-      setPlaceId(value?.place_id);
-      setPlaceDescription(value?.description);
-      setZoneIdEnabled(false);
-      setGeoLocationEnable(true);
-    }
-    setPlaceDetailsEnabled(true);
-  };
+  // const HandleChangeForSearch = (event) => {
+  //   setSearchKey(event.target.value);
+  //   if (event.target.value) {
+  //     setEnabled(true);
+  //     setGeoLocationEnable(true);
+  //     setCurrentLocation(event.target.value);
+  //   } else {
+  //     setEnabled(false);
+  //     setCurrentLocation(undefined);
+  //   }
+  // };
+  // const handleChange = (event, value) => {
+  //   if (value) {
+  //     setPlaceId(value?.place_id);
+  //     setPlaceDescription(value?.description);
+  //     setZoneIdEnabled(false);
+  //     setGeoLocationEnable(true);
+  //   }
+  //   setPlaceDetailsEnabled(true);
+  // };
   const { data: places, isLoading } = useGetAutocompletePlace(
     searchKey,
     enabled
@@ -205,18 +205,18 @@ const HeroLocationForm = () => {
     }
   };
 
-  const handleCloseModuleModal = (item) => {
-    if (item) {
-      toast.success(t(module_select_success));
-      router.push("/home", undefined, { shallow: true });
-    }
-    setOpenModuleSelection(false);
-  };
+  // const handleCloseModuleModal = (item) => {
+  //   if (item) {
+  //     toast.success(t(module_select_success));
+  //     router.push("/home", undefined, { shallow: true });
+  //   }
+  //   setOpenModuleSelection(false);
+  // };
   const excludedDivRef = useRef(null);
   useEffect(() => {
     const timer = setTimeout(() => {
       setLocationEnable();
-    }, 100);
+    }, 10);
 
     return () => {
       clearTimeout(timer);
@@ -243,18 +243,18 @@ const HeroLocationForm = () => {
     };
   }, [excludedDivRef]);
 
-  const handlePickLocation = (e) => {
-    setPickLocation((prev) => !prev);
-  };
+  // const handlePickLocation = (e) => {
+  //   setPickLocation((prev) => !prev);
+  // };
   const lanDirection = getLanguage() ? getLanguage() : "ltr";
 
   return (
     <>
-      <CustomStackFullWidth
+      {/* <CustomStackFullWidth
         backgroundColor={alpha(theme.palette.primary.main, 0.5)}
         padding={{ xs: ".7rem", md: "1.2rem" }}
         borderRadius="5px"
-      >
+      > */}
        {/* <CustomStackFullWidth
           direction="row"
           alignItems="center"
@@ -423,15 +423,15 @@ const HeroLocationForm = () => {
             isGeolocationEnabled={isGeolocationEnabled}
           />
         )} */}
-      </CustomStackFullWidth>
-      {zoneData && openModuleSelection && (
+      {/* </CustomStackFullWidth> */}
+      {/* {zoneData && openModuleSelection && (
         <ModuleSelection
           location={currentLocation}
           closeModal={handleCloseModuleModal}
           setOpenModuleSelection={setOpenModuleSelection}
           disableAutoFocus
         />
-      )}
+      )} */}
     </>
   );
 };
