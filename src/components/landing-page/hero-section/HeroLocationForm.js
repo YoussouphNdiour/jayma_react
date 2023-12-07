@@ -167,7 +167,9 @@ const HeroLocationForm = () => {
   // get module from localstorage
   let selectedModule = undefined;
   if (typeof window !== "undefined") {
-    selectedModule = localStorage.getItem("module");
+    if(localStorage.getItem("module"))
+    selectedModule = localStorage.getItem("module")
+  else  selectedModule =1  ;
   }
   const onSuccessHandler = (response) => {
     dispatch(setWishList(response));
