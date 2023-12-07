@@ -193,11 +193,11 @@ const HeroLocationForm = () => {
       console.log("localStorage",localStorage);
       toast.success(t("New location has been set."));
       setOpenModuleSelection(true);
-      // if (!selectedModule) {
-      //   setOpenModuleSelection(true);
-      // } else {
-      //   router.push("/home");
-      // }
+      if (!selectedModule) {
+        setOpenModuleSelection(true);
+      } else {
+        router.push("/home");
+      }
     } else {
       toast.error(t("Location is required."), {
         id: "id",
@@ -408,7 +408,7 @@ const HeroLocationForm = () => {
             </Grid>
           </Grid>
         </CustomStackFullWidth> */}
-        {open && (
+        {/* {open && (
           <MapModal
             open={open}
             handleClose={handleClose}
@@ -422,7 +422,7 @@ const HeroLocationForm = () => {
             openLocation={openLocation}
             isGeolocationEnabled={isGeolocationEnabled}
           />
-        )}
+        )} */}
       </CustomStackFullWidth>
       {zoneData && openModuleSelection && (
         <ModuleSelection
