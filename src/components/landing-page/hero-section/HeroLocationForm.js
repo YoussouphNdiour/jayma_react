@@ -1,9 +1,9 @@
 import React, { useEffect, useId, useState } from "react";
 import {
   alpha,
-  // Grid,
-  // Stack,
-  // Typography,
+  Grid,
+  Stack,
+  Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -39,13 +39,13 @@ const HeroLocationForm = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [location, setLocation] = useState({lat:14.7805196,lng:-16.9493865});
+  const [location, setLocation] = useState(undefined);
   const [geoLocationEnable, setGeoLocationEnable] = useState(false);
   const [searchKey, setSearchKey] = useState("");
   const [enabled, setEnabled] = useState(false);
   const [openLocation, setOpenLocation] = useState(false);
   const [predictions, setPredictions] = useState([]);
-  const [currentLocation, setCurrentLocation] = useState("Q3J2+2MF, Thies, Senegal");
+  const [currentLocation, setCurrentLocation] = useState(undefined);
   const [showCurrentLocation, setShowCurrentLocation] = useState(false);
   const [zoneIdEnabled, setZoneIdEnabled] = useState(false);
   const [placeId, setPlaceId] = useState("");
@@ -72,45 +72,45 @@ const HeroLocationForm = () => {
       isGeolocationEnabled: true,
     });
 
-  // const handleCloseLocation = () => {
-  //   setOpenLocation(false);
-  //   setShowCurrentLocation(false);
-  //   setGeoLocationEnable(false);
-  //   setCurrentLocation(undefined);
-  // };
-  // const handleAgreeLocation = (e) => {
-  //   e.stopPropagation();
-  //   if (coords) {
-  //     setLocation({ lat: coords?.latitude, lng: coords?.longitude });
-  //     setOpenLocation(false);
-  //     setShowCurrentLocation(true);
-  //     setGeoLocationEnable(true);
-  //     setZoneIdEnabled(true);
-  //   } else {
-  //     setOpenLocation(true);
-  //   }
-  // };
+  const handleCloseLocation = () => {
+    setOpenLocation(false);
+    setShowCurrentLocation(false);
+    setGeoLocationEnable(false);
+    setCurrentLocation(undefined);
+  };
+  const handleAgreeLocation = (e) => {
+    e.stopPropagation();
+    if (coords) {
+      setLocation({ lat: coords?.latitude, lng: coords?.longitude });
+      setOpenLocation(false);
+      setShowCurrentLocation(true);
+      setGeoLocationEnable(true);
+      setZoneIdEnabled(true);
+    } else {
+      setOpenLocation(true);
+    }
+  };
 
-  // const HandleChangeForSearch = (event) => {
-  //   setSearchKey(event.target.value);
-  //   if (event.target.value) {
-  //     setEnabled(true);
-  //     setGeoLocationEnable(true);
-  //     setCurrentLocation(event.target.value);
-  //   } else {
-  //     setEnabled(false);
-  //     setCurrentLocation(undefined);
-  //   }
-  // };
-  // const handleChange = (event, value) => {
-  //   if (value) {
-  //     setPlaceId(value?.place_id);
-  //     setPlaceDescription(value?.description);
-  //     setZoneIdEnabled(false);
-  //     setGeoLocationEnable(true);
-  //   }
-  //   setPlaceDetailsEnabled(true);
-  // };
+  const HandleChangeForSearch = (event) => {
+    setSearchKey(event.target.value);
+    if (event.target.value) {
+      setEnabled(true);
+      setGeoLocationEnable(true);
+      setCurrentLocation(event.target.value);
+    } else {
+      setEnabled(false);
+      setCurrentLocation(undefined);
+    }
+  };
+  const handleChange = (event, value) => {
+    if (value) {
+      setPlaceId(value?.place_id);
+      setPlaceDescription(value?.description);
+      setZoneIdEnabled(false);
+      setGeoLocationEnable(true);
+    }
+    setPlaceDetailsEnabled(true);
+  };
   const { data: places, isLoading } = useGetAutocompletePlace(
     searchKey,
     enabled
@@ -167,9 +167,7 @@ const HeroLocationForm = () => {
   // get module from localstorage
   let selectedModule = undefined;
   if (typeof window !== "undefined") {
-    if(localStorage.getItem("module"))
-    selectedModule = localStorage.getItem("module")
-  else  selectedModule =1  ;
+    selectedModule = localStorage.getItem("module");
   }
   const onSuccessHandler = (response) => {
     dispatch(setWishList(response));
@@ -192,38 +190,29 @@ const HeroLocationForm = () => {
       localStorage.setItem("location", currentLocation);
       localStorage.setItem("currentLatLng", JSON.stringify(location));
       //handleModalClose();
-      console.log("localStorage",localStorage);
+
       toast.success(t("New location has been set."));
       setOpenModuleSelection(true);
-      if (!selectedModule) {
-        setOpenModuleSelection(true);
-      } else {
-        router.push("/home");
-      }
+      // if (!selectedModule) {
+      //   setOpenModuleSelection(true);
+      // } else {
+      //   router.push("/home");
+      // }
     } else {
       toast.error(t("Location is required."), {
         id: "id",
       });
     }
   };
-
-  // const handleCloseModuleModal = (item) => {
-  //   if (item) {
-  //     toast.success(t(module_select_success));
-  //     router.push("/home", undefined, { shallow: true });
-  //   }
-  //   setOpenModuleSelection(false);
-  // };
+  const handleCloseModuleModal = (item) => {
+    if (item) {
+      toast.success(t(module_select_success));
+      router.push("/home", undefined, { shallow: true });
+    }
+    setOpenModuleSelection(false);
+  };
   const excludedDivRef = useRef(null);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLocationEnable();
-    }, 10);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
   useEffect(() => {
     // Handle clicks outside of excludedDivRef
     const handleClickOutside = (event) => {
@@ -235,7 +224,7 @@ const HeroLocationForm = () => {
         // setClickedOutside(true);
       }
     };
-    // setLocationEnable();
+
     // Add event listener to document
     document.addEventListener("mousedown", handleClickOutside);
 
@@ -245,24 +234,24 @@ const HeroLocationForm = () => {
     };
   }, [excludedDivRef]);
 
-  // const handlePickLocation = (e) => {
-  //   setPickLocation((prev) => !prev);
-  // };
+  const handlePickLocation = (e) => {
+    setPickLocation((prev) => !prev);
+  };
   const lanDirection = getLanguage() ? getLanguage() : "ltr";
 
   return (
     <>
-      {/* <CustomStackFullWidth
+      <CustomStackFullWidth
         backgroundColor={alpha(theme.palette.primary.main, 0.5)}
         padding={{ xs: ".7rem", md: "1.2rem" }}
         borderRadius="5px"
-      > */}
-       {/* <CustomStackFullWidth
+      >
+        <CustomStackFullWidth
           direction="row"
           alignItems="center"
           sx={{ position: "relative", zIndex: 999 }}
         >
-           <Grid container>
+          <Grid container>
             <Grid item xs={5.8} sm={7}>
               <CustomMapSearch
                 isLoading={isLoadingGeoCode}
@@ -409,8 +398,8 @@ const HeroLocationForm = () => {
               </StyledButton>
             </Grid>
           </Grid>
-        </CustomStackFullWidth> */}
-        {/* {open && (
+        </CustomStackFullWidth>
+        {open && (
           <MapModal
             open={open}
             handleClose={handleClose}
@@ -424,16 +413,16 @@ const HeroLocationForm = () => {
             openLocation={openLocation}
             isGeolocationEnabled={isGeolocationEnabled}
           />
-        )} */}
-      {/* </CustomStackFullWidth> */}
-      {/* {zoneData && openModuleSelection && (
+        )}
+      </CustomStackFullWidth>
+      {zoneData && openModuleSelection && (
         <ModuleSelection
           location={currentLocation}
           closeModal={handleCloseModuleModal}
           setOpenModuleSelection={setOpenModuleSelection}
           disableAutoFocus
         />
-      )} */}
+      )}
     </>
   );
 };
