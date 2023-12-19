@@ -5,7 +5,7 @@ const MainApi = axios.create({
 
 });
 MainApi.interceptors.request.use((config) => {
-  config.headers['Access-Control-Allow-Origin'] = 'https://api.jaymagadegui.sn'; // Remplacez '*' par votre domaine si vous connaissez le domaine d'origine
+  config.headers['Access-Control-Allow-Origin'] = '*'; // Remplacez '*' par votre domaine si vous connaissez le domaine d'origine
   config.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
   config.headers['Access-Control-Allow-Methods'] = '*';
   return config;
