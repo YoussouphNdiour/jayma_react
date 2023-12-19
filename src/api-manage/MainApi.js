@@ -2,6 +2,8 @@ import axios from "axios";
 export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const MainApi = axios.create({
   baseURL: baseUrl,
+  headers:{
+    'Access-Control-Allow-Origin':'*';
 
 });
 MainApi.interceptors.request.use((config) => {
