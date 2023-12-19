@@ -112,7 +112,7 @@ export const getServerSideProps = async (context) => {
     }
   );
   const landingPageRes = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/react-landing-page`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
     {
       method: "GET",
       headers: {
@@ -123,7 +123,7 @@ export const getServerSideProps = async (context) => {
       },
     }
   );
-  const landingPageData = {};
+  const landingPageData = await landingPageRes.json();
   const config = await configRes.json();
   const storeDetails = await storeDetailsRes.json();
   return {
