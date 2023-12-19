@@ -75,7 +75,8 @@ export const getServerSideProps = async () => {
         },
       }
     );
-    const landingPageData = await landingPageRes.json();
+    const landingPageData = {};
+    //await landingPageRes.json();
 
     // Cache the fetched data
     setCache(cacheKey, {
