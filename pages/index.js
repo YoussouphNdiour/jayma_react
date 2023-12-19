@@ -58,18 +58,18 @@ export const getServerSideProps = async (context) => {
     }
   );
   const config = await configRes.json();
-  const landingPageRes = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
-    {
-      method: "GET",
-      headers: {
-        "X-software-id": 33571750,
-        "X-server": "server",
-        "X-localization": language,
-        origin: process.env.NEXT_CLIENT_HOST_URL,
-      },
-    }
-  );
+  // const landingPageRes = await fetch(
+  //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "X-software-id": 33571750,
+  //       "X-server": "server",
+  //       "X-localization": language,
+  //       origin: process.env.NEXT_CLIENT_HOST_URL,
+  //     },
+  //   }
+  // );
   const landingPageData = {};
   //await landingPageRes.json();
   // Set cache control headers for 1 hour (3600 seconds)
