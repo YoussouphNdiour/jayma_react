@@ -107,7 +107,8 @@ export const getServerSideProps = async (context) => {
       },
     }
   );
-  const landingPageData = await landingPageRes.json();
+  const landingPageData = {};
+  //await landingPageRes.json();
 
   return {
     props: {
