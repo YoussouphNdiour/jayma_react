@@ -65,7 +65,7 @@ export const getServerSideProps = async () => {
     const config = await configRes.json();
 
     const landingPageRes = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/react-landing-page`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
       {
         method: "GET",
         headers: {
@@ -75,7 +75,7 @@ export const getServerSideProps = async () => {
         },
       }
     );
-    const landingPageData = {};
+    const landingPageData = await landingPageRes.json();
 
     // Cache the fetched data
     setCache(cacheKey, {
