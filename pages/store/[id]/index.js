@@ -111,18 +111,18 @@ export const getServerSideProps = async (context) => {
       },
     }
   );
-  const landingPageRes = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
-    {
-      method: "GET",
-      headers: {
-        "X-software-id": 33571750,
-        "X-server": "server",
-        origin: process.env.NEXT_CLIENT_HOST_URL,
-        "X-localization": language,
-      },
-    }
-  );
+  // const landingPageRes = await fetch(
+  //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "X-software-id": 33571750,
+  //       "X-server": "server",
+  //       origin: process.env.NEXT_CLIENT_HOST_URL,
+  //       "X-localization": language,
+  //     },
+  //   }
+  // );
   const landingPageData = {};
   //await landingPageRes.json();
   const config = await configRes.json();
