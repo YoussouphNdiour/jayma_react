@@ -2,30 +2,31 @@ import axios from "axios";
 export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const MainApi = axios.create({
   baseURL: baseUrl,
+
 });
+MainApi.interceptors.request.use((config) => {
+  config.headers['Access-Control-Allow-Origin'] = 'https://api.jaymagadegui.sn'; // Remplacez '*' par votre domaine si vous connaissez le domaine d'origine
+  config.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+  config.headers['Access-Control-Allow-Methods'] = '*';
+  return config;
+});
+
 MainApi.interceptors.request.use(function (config) {
-  let zoneid = "[1}";
+  let zoneid = undefined;
   let token = undefined;
   let language = undefined;
-  let currentLocation = {lat:14.7805196,lng:-16.9493865};
+  let currentLocation = undefined;
   let software_id = 33571750;
   let hostname = process.env.NEXT_CLIENT_HOST_URL;
-  let moduleid = {id:"1"};
+  let moduleid = undefined;
 
   if (typeof window !== "undefined") {
     zoneid = localStorage.getItem("zoneid");
     token = localStorage.getItem("token");
     language = JSON.parse(localStorage.getItem("language-setting"));
-    currentLocation = {lat:14.7805196,lng:-16.9493865};
+    currentLocation = JSON.parse(localStorage.getItem("currentLatLng"));
     moduleid = JSON.parse(localStorage.getItem("module"))?.id;
-    // currentLocation= {lat:"14.7788532", lng: "-16.9476776"};
-    // language = "en";
-    // location= "Senegal";
-    // moduleid= {id:1};z
-    // zoneid= "[1]";
-    // token = localStorage.getItem("token");
   }
-  console.log('localStorage',localStorage);
   if (currentLocation) config.headers.latitude = currentLocation.lat;
   if (currentLocation) config.headers.longitude = currentLocation.lng;
   if (zoneid) config.headers.zoneid = zoneid;
