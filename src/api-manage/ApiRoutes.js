@@ -84,7 +84,7 @@ export const submit_deliveryman_review_api =
   "/api/v1/delivery-man/reviews/submit";
 
 export const update_interest_api = "/api/v1/customer/update-interest";
-export const landing_page_api = "/api/v1/react-landing-page";
+export const landing_page_api = "/api/v1/landing-page";
 export const most_trips = "/api/v1/most-tips";
 
 export const wallet_bonuses = "/api/v1/customer/wallet/bonuses";
