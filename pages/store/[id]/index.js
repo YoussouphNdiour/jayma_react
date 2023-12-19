@@ -123,7 +123,8 @@ export const getServerSideProps = async (context) => {
       },
     }
   );
-  const landingPageData = await landingPageRes.json();
+  const landingPageData = {};
+  //await landingPageRes.json();
   const config = await configRes.json();
   const storeDetails = await storeDetailsRes.json();
   return {
