@@ -70,7 +70,8 @@ export const getServerSideProps = async (context) => {
       },
     }
   );
-  const landingPageData = await landingPageRes.json();
+  const landingPageData = {};
+  //await landingPageRes.json();
   // Set cache control headers for 1 hour (3600 seconds)
   res.setHeader(
     "Cache-Control",
