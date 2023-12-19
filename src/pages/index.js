@@ -64,17 +64,17 @@ export const getServerSideProps = async () => {
     );
     const config = await configRes.json();
 
-    const landingPageRes = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
-      {
-        method: "GET",
-        headers: {
-          "X-software-id": 33571750,
-          "X-server": "server",
-          origin: process.env.NEXT_CLIENT_HOST_URL,
-        },
-      }
-    );
+    // const landingPageRes = await fetch(
+    //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
+    //   {
+    //     method: "GET",
+    //     headers: {
+    //       "X-software-id": 33571750,
+    //       "X-server": "server",
+    //       origin: process.env.NEXT_CLIENT_HOST_URL,
+    //     },
+    //   }
+    // );
     const landingPageData = {};
     //await landingPageRes.json();
 
